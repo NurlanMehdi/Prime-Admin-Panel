@@ -2358,7 +2358,7 @@ progress {
   display: block;
   width: 100%;
   padding: 0.775rem 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
   color: var(--bs-gray-700);
@@ -2517,7 +2517,7 @@ textarea.form-control-lg {
   display: block;
   width: 100%;
   padding: 0.775rem 3rem 0.775rem 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
   color: var(--bs-gray-700);
