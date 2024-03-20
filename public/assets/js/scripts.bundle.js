@@ -8302,3 +8302,14 @@ $(document).on('click', '.button-ajax', function (e) {
             }
         });
 });
+
+
+$('.flatpickr-input').flatpickr();
+$('.flatpickr-input.time').flatpickr({
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+});
+
+
+$('.select2-box').select2();
