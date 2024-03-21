@@ -215,7 +215,7 @@ document.getElementById('jobSearchForm').addEventListener('submit', function(eve
                     
                 '</td>' +
                 '<td>' +
-                '<a href="{{ route('call.details', ['edit' => 'false']) }}" class="text-gray-900 fw-bold text-hover-primary fs-6">W-'+data.jobs.id+'</a>' 
+                '<a href="{{ route('call.details') }}false" class="text-gray-900 fw-bold text-hover-primary fs-6">W-'+data.jobs.id+'</a>' 
                     +
                 '</td>' +
                 '<td>' +
