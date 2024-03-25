@@ -61,19 +61,16 @@ class SchedulingPanelController extends Controller
 
     public function newJobInquiries()
     {
-        return view('pages.schedulingPanel.newJobInquiries');
+        $inProgressJobs = Job::inProgress()->paginate(10);
+
+        return view('pages.schedulingPanel.newJobInquiries', ['jobs' => $inProgressJobs]);
     }
 
-    public function callDetails($edit)
+    public function callDetails($edit, $key = null,$jobId= null)
     {
-
-        if($edit != "false")
-        {
-            return view('pages.schedulingPanel.callDetails',['edit'=>$edit]);
-        }else{
-            return view('pages.schedulingPanel.callDetails',['edit'=>false]);
-        }
-
-        
+        $job = Job::where('id', $jobId)->first();
+        $edit = $edit !== "false" ? $edit : false;
+    
+        return view('pages.schedulingPanel.callDetails', compact('edit', 'key','job'));
     }
 }

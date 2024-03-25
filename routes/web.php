@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
-
-    Route::get('/', [DashboardController::class, 'index']);
-
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/job-search', [SchedulingPanelController::class, 'jobSearch'])->name('job.search');
@@ -34,7 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/pending-request-job-authorization', [SchedulingPanelController::class, 'pendingRequestJobAuthorization'])->name('pending.request');
     Route::get('/authorization-profile-details', [SchedulingPanelController::class, 'authorizationProfileDetails'])->name('authorization.profile.details');
 
-    Route::get('/call-details/{edit}',[SchedulingPanelController::class, 'callDetails'])->name('call.details');
+    Route::get('/call-details/{edit}/{key?}/{jobId?}',[SchedulingPanelController::class, 'callDetails'])->name('call.details');
 
     Route::get('/save/jobs',[JobsController::class, 'insertAllJobs']);
 

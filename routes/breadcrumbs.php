@@ -11,15 +11,27 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 });
 
 // Home > Dashboard
-Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('jobSearch', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Dashboard', route('dashboard'));
+    $trail->push('Job Search', route('job.search'));
 });
 
-// Home > Dashboard > User Management
-Breadcrumbs::for('user-management.index', function (BreadcrumbTrail $trail) {
-    $trail->parent('dashboard');
-    $trail->push('User Management', route('user-management.users.index'));
+// Home > Job Search > Call Details
+Breadcrumbs::for('callDetails', function (BreadcrumbTrail $trail) {
+    $trail->parent('jobSearch');
+    $trail->push('Call Details', route('call.details',['edit','false']));
+});
+
+// Home > Dashboard
+Breadcrumbs::for('newJobInquiries', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('New Job Inquiries', route('new.job.inquiries'));
+});
+
+// Home > New Job Inquiries > Call Details
+Breadcrumbs::for('newJobCallDetails', function (BreadcrumbTrail $trail) {
+    $trail->parent('newJobInquiries');
+    $trail->push('Call Details', route('call.details',['edit','false']));
 });
 
 // Home > Dashboard > User Management > Users

@@ -17,7 +17,7 @@
                         <!--end::Title-->
                         <!--begin::Breadcrumb-->
                         @section('breadcrumbs')
-                        {{ Breadcrumbs::render('dashboard','jobSearch') }}
+                        {{ Breadcrumbs::render('jobSearch') }}
                         @endsection
                         <!--end::Breadcrumb-->
                     </div>
@@ -30,7 +30,7 @@
             <!--begin::Content-->
             <div id="kt_app_content" class="app-content flex-column-fluid">
                 <!--begin::Content container-->
-                <div id="kt_app_content_container" class="app-container container-xxl">
+                <div id="kt_app_content_container" class="row gy-5 g-xl-10">
                     <!--begin::Form-->
                     <form id="jobSearchForm" action="{{ route('job.search.filter') }}" method="post">
 					@csrf<!--begin::Card-->
@@ -88,7 +88,7 @@
                     <!--end::Form-->
 
                     <!--begin::Tables Widget 13-->
-                    <div class="card mb-5 mb-xl-8"  id="searchResultsTable"  style="display: none;">
+                    <div class="card mb-6 mb-xl-10"  id="searchResultsTable"  style="display: none;">
                         <!--begin::Header-->
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
@@ -111,22 +111,22 @@
 													<input class="form-check-input" type="checkbox" value="1" data-kt-check="true" data-kt-check-target=".widget-13-check" />
 												</div>
 											</th>
-											<th class="min-w-150px">Urgency Level</th>
-											<th class="min-w-140px">Admin Panel Job ID</th>
-											<th class="min-w-120px">HCP invoice</th>
-											<th class="min-w-120px">B2B/ Warranty Reference ID</th>
-											<th class="min-w-120px">Source (B2C, B2B, Warranty)</th>
-											<th class="min-w-120px">Company name</th>
-											<th class="min-w-120px">Customer name</th>
-											<th class="min-w-120px">Phone number</th>
-											<th class="min-w-120px">Job Postal Code</th>
-											<th class="min-w-120px">Appointment Time window </th>
-											<th class="min-w-120px">Days to The Appointment</th>
-											<th class="min-w-120px">Current Job Stage</th>
-											<th class="min-w-120px">Next Job Stage</th>
-											<th class="min-w-120px">Type of Job (Appliance/ Other)</th>
-											<th class="min-w-120px">Type of Product</th>
-											<th class="min-w-120px">Problem Description</th>
+											<th class="min-w-150px"><span class='badge fw-bold fs-6'>Urgency Level</span></th>
+											<th class="min-w-140px"><span class='badge fw-bold fs-6'>Admin Panel Job ID</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>HCP invoice	</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>B2B/ Warranty Reference ID</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Source (B2C, B2B, Warranty) </span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Company name</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Customer name </span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Phone number </span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Job Postal Code</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Appointment Time window</span> </th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Days to The Appointment</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Current Job Stage</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Next Job Stage</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Job (Appliance/ Other)</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Product</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Problem Description</span></th>
 										</tr>
 									</thead>
 									<!--end::Table head-->
@@ -210,7 +210,7 @@ document.getElementById('jobSearchForm').addEventListener('submit', function(eve
                     '</div>' +
                 '</td>' +
                 '<td>' +
-                '<span class="text-muted fw-semibold text-muted d-block fs-7"></span>'
+                '<span class="badge"></span>'
                     +
                     
                 '</td>' +
@@ -219,52 +219,53 @@ document.getElementById('jobSearchForm').addEventListener('submit', function(eve
                     +
                 '</td>' +
                 '<td>' +
-                    '<a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">05/28/2020</a>' +
+                    '<a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">'+ data.jobs.invoice_number+'</a>' +
                 '</td>' +
                 '<td>' +
                     '<a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">Intertico</a>' +
                 '</td>' +
                 '<td class="text-gray-900 fw-bold text-hover-primary fs-6">$3560</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">'+ data.jobs.company_name +'</span>' +
+                    '<span class="badge">'+ data.jobs.company_name +'</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">'+ customerData.last_name + ' ' + customerData.first_name +'</span>' +
+                    '<span class="badge">'+ customerData.last_name + ' ' + customerData.first_name +'</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">'+ customerData.mobile_number +'</span>' +
+                    '<span class="badge">'+ customerData.mobile_number +'</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">'+ address.zip +'</span>' +
+                    '<span class="badge">'+ address.zip +'</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">'+ schedule.appointments.arrival_window_minutes + '</span>' +
+                    '<span class="badge">'+ schedule.appointments.arrival_window_minutes + '</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">'+ schedule.appointments.arrival_window_minutes + '</span>' +
+                    '<span class="badge">'+ schedule.appointments.arrival_window_minutes + '</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">Code: PH</span>' +
+                    '<span class="badge">Code: PH</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">Code: PH</span>' +
+                    '<span class="badge">Code: PH</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">Code: PH</span>' +
+                    '<span class="badge">Code: PH</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">Code: PH</span>' +
+                    '<span class="badge">Code: PH</span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="text-muted fw-semibold text-muted d-block fs-7">Code: PH</span>' +
+                    '<span class="badge">'+ data.jobs.description + '</span>' +
                 '</td>' +
             '</tr>';
 
 
                 // Append the new row to the table body
+                document.getElementById('searchResultsTableBody').innerHTML = '';
                 document.getElementById('searchResultsTableBody').insertAdjacentHTML('beforeend', newRow);
                 
-                document.getElementById('searchResultsTable').style.display = 'table';
+                document.getElementById('searchResultsTable').style.display = 'block';
             }
         })
         .catch(error => {

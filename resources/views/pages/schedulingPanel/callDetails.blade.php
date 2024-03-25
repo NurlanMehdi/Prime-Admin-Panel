@@ -2,7 +2,6 @@
    <!--begin::Main-->
    <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
       <div class="d-flex flex-column flex-column-fluid">
-
          <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
             <!--begin::Toolbar container-->
             <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
@@ -15,7 +14,11 @@
                   <!--end::Title-->
                   <!--begin::Breadcrumb-->
                   @section('breadcrumbs')
-                  {{ Breadcrumbs::render('dashboard','jobSearch') }}
+                  @if(request()->route()->getName() != 'call.details')
+                  {{ Breadcrumbs::render('callDetails') }}
+                  @else
+                  {{ Breadcrumbs::render('newJobCallDetails') }}
+                  @endif
                   @endsection
                   <!--end::Breadcrumb-->
                </div>
@@ -23,7 +26,23 @@
             </div>
             <!--end::Toolbar container-->
          </div>
-         <div id="kt_app_content" class="app-content  flex-column-fluid ">
+         <div id="kt_app_content_message" style="display:none" class="app-content  flex-column-fluid ">
+            <div id="kt_app_content_container" class="row g-xxl-9">
+               <div class="col-xxl-12">
+                  <div class="card  mb-xl-10" id="kt_profile_details_view">
+                     <!--begin::Card header-->
+                     <div class="card-header cursor-pointer">
+                        <!--begin::Card title-->
+                        <div  id="customerDetails" style="padding: 0px 0 0 530px;" class="card-title m-0" >
+                        </div>
+                        <!--end::Card title-->
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+         <div class="call_details app-content  flex-column-fluid ">
             <div id="kt_app_content_container" class="row g-xxl-9">
                <div class="col-xxl-6">
                   <div class="card mb-xl-10 h-md-100" id="kt_profile_details_view">
@@ -39,7 +58,7 @@
                      <!--begin::Card body-->
                      <div class="card-body">
                         <div class="mb-4 d-inline-block">
-                           <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Contact Info</div>   
+                           <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Contact Info</div>
                         </div>
                         <div class="row mb-4 align-items-center">
                            <label class="col-lg-2 fw-bold text-gray-800" {{ $edit ? 'style=padding:11px;' : '' }} for="name">First Name:</label>
@@ -49,7 +68,6 @@
                               {{-- @else
                               <input type="text" class="form-control" placeholder="First Name" id="name" name="name" value="Max">
                               @endif --}}
-                              
                            </div>
                            <label class="col-lg-2 fw-bold text-gray-800" for="surname" {{ $edit ? 'style=padding:11px;' : '' }}>Last Name:</label>
                            <div class="col-lg-4 fv-row">
@@ -168,7 +186,7 @@
                         <div class="col-lg-12">
                            <div class="row mb-4 align-items-center">
                               <div class="col-lg-6 mb-4">
-                                 <div class="fw-bold fs-6 text-gray-800 underscore-text-title d-inline-block">Job ID References</div>   
+                                 <div class="fw-bold fs-6 text-gray-800 underscore-text-title d-inline-block">Job ID References</div>
                               </div>
                               <label class="col-lg-3 fw-bold text-gray-800" for="job_status"  {{ $edit ? 'style=padding:11px;' : '' }}>Current Job Status:</label>
                               <div class="col-lg-3">
@@ -203,7 +221,7 @@
                         <div class="separator separator-dashed mb-9"></div>
                         <div class="col-lg-12">
                            <div class="mb-4 d-inline-block">
-                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Company Details</div>   
+                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Company Details</div>
                            </div>
                            <div class="row mb-4 align-items-center">
                               <label class="col-lg-3 fw-bold text-gray-800" for="company_name" {{ $edit ? 'style=padding:11px;' : '' }}>Company Name:</label>
@@ -259,21 +277,21 @@
                      <div class="card-body row">
                         <div class="col-lg-6 border-end">
                            <div class="mb-4 d-inline-block">
-                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Job Categorization</div>   
+                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Job Categorization</div>
                            </div>
                            <div class="row mb-4 align-items-center">
                               <label class="col-lg-3 fw-semibold text-gray-800" for="job-type" {{ $edit ? 'style=padding:11px;' : '' }}>Type of Job:</label>
                               <div class="col-lg-3">
-                                  {{-- @if($edit) --}}
+                                 {{-- @if($edit) --}}
                                  <select name="job-type" id="job-type" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-placeholder="Select job type..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1" data-kt-initialized="1">
-                                    <option>Appliance</option>
-                                    <option value="1">Grace Green</option>
-                                    <option value="2">Nick LOgan</option>
-                                    <option value="3">Carles Nilson</option>
-                                    <option value="4">Alice Danchik</option>
-                                    <option value="5">Harris Bold</option>
-                                    <option value="6">Carles Nilson</option>
-                                </select>
+                                 <option>Appliance</option>
+                                 <option value="1">Grace Green</option>
+                                 <option value="2">Nick LOgan</option>
+                                 <option value="3">Carles Nilson</option>
+                                 <option value="4">Alice Danchik</option>
+                                 <option value="5">Harris Bold</option>
+                                 <option value="6">Carles Nilson</option>
+                                 </select>
                                  {{-- @else
                                  <span class="fw-bold fs-6 text-muted">Appliance</span>
                                  @endif --}}
@@ -289,28 +307,28 @@
                            </div>
                            <div class="separator separator-dashed mb-9"></div>
                            <div class="mb-4 d-inline-block">
-                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Additional Specifics For Appliances only</div>   
+                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Additional Specifics For Appliances only</div>
                            </div>
                            <div class="row mb-4 align-items-center">
                               <label class="col-lg-3 fw-semibold text-gray-800" for="fuel-type" {{ $edit ? 'style=padding:11px;' : '' }}>Fuel Type:</label>
                               <div class="col-lg-3">
-                              {{-- @if($edit) --}}
+                                 {{-- @if($edit) --}}
                                  <select name="fuel-type" id="fuel-type" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-placeholder="Select fuel type..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1" data-kt-initialized="1">
-                                    <option>Gas</option>
-                                    <option value="1">Grace Green</option>
-                                    <option value="2">Nick LOgan</option>
-                                    <option value="3">Carles Nilson</option>
-                                    <option value="1">Alice Danchik</option>
-                                    <option value="2">Harris Bold</option>
-                                    <option value="3">Carles Nilson</option>
-                                </select>
+                                 <option>Gas</option>
+                                 <option value="1">Grace Green</option>
+                                 <option value="2">Nick LOgan</option>
+                                 <option value="3">Carles Nilson</option>
+                                 <option value="1">Alice Danchik</option>
+                                 <option value="2">Harris Bold</option>
+                                 <option value="3">Carles Nilson</option>
+                                 </select>
                                  {{-- @else
                                  <span class="fw-bold fs-6 text-muted">Gas</span>
                                  @endif --}}
                               </div>
                               <label class="col-lg-3 fw-semibold text-gray-800" for="model-number" {{ $edit ? 'style=padding:11px;' : '' }}>Model Number:</label>
                               <div class="col-lg-3 fv-row">
-                              {{-- @if($edit) --}}
+                                 {{-- @if($edit) --}}
                                  <input type="text" class="form-control" placeholder="Model Number" id="model-number" name="model-number" value="EFMC627UTT" {{ $edit ? '' : 'disabled="disabled"' }}>
                                  {{-- @else
                                  <span class="fw-semibold text-gray-800 fs-6">EFMC627UTT</span>
@@ -320,10 +338,10 @@
                            <div class="row mb-4 align-items-center">
                               <label class="col-lg-3 fw-semibold text-gray-800" for="stacked-unit" {{ $edit ? 'style=padding:11px;' : '' }}>Stacked unit:</label>
                               <div class="col-lg-3">
-                              {{-- @if($edit) --}}
+                                 {{-- @if($edit) --}}
                                  <select name="stacked-unit" id="stacked-unit" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-placeholder="Select stacked unit..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1" data-kt-initialized="1">
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
+                                 <option value="0">No</option>
+                                 <option value="1">Yes</option>
                                  </select>
                                  {{-- @else
                                  <span class="fw-bold fs-6 text-muted">No</span>
@@ -343,10 +361,10 @@
                               <div class="col-lg-3">
                                  {{-- @if($edit) --}}
                                  <select name="brand" id="brand" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-placeholder="Select brand..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1" data-kt-initialized="1">
-                                    <option>Electrolux</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
+                                 <option>Electrolux</option>
+                                 <option value="1">Yes</option>
+                                 <option value="2">No</option>
+                                 </select>
                                  {{-- @else
                                  <span class="fw-bold fs-6 text-muted">Electrolux</span>
                                  @endif --}}
@@ -360,12 +378,12 @@
                               <div class="col-lg-4 fv-row">
                                  {{-- @if($edit) --}}
                                  <select name="urgency-level" id="urgency-level" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-hide-search="true" data-placeholder="Select urgency level..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1"  data-kt-initialized="1">
-                                    <option value="">Select urgency level...</option>
-                                    <option value="1">CRM</option>
-                                    <option value="2">Project Alice</option>
-                                    <option value="3">Keenthemes</option>
-                                    <option value="4">General</option>
-                                </select>
+                                 <option value="">Select urgency level...</option>
+                                 <option value="1">CRM</option>
+                                 <option value="2">Project Alice</option>
+                                 <option value="3">Keenthemes</option>
+                                 <option value="4">General</option>
+                                 </select>
                                  {{-- @else
                                  <span class="fw-bold fs-6 text-muted">Select</span>
                                  @endif --}}
@@ -394,16 +412,16 @@
                      </div>
                      <div class="card-body">
                         <div class="mb-4 d-inline-block">
-                           <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Service Type and Price</div>   
+                           <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Service Type and Price</div>
                         </div>
                         <div class="row mb-4 align-items-center">
                            <label class="col-lg-2 fw-bold text-gray-800" for="service-type" {{ $edit ? 'style=padding:11px;' : '' }}>Service Type:</label>
                            <div class="col-lg-4">
-                           {{-- @if($edit) --}}
+                              {{-- @if($edit) --}}
                               <select name="service-type" id="service-type" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-placeholder="Service Type..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1" aria-hidden="true">
-                                 <option>Diagnostic Truck Roll</option>
-                                 <option value="1">Yes</option>
-                                 <option value="2">No</option>
+                              <option>Diagnostic Truck Roll</option>
+                              <option value="1">Yes</option>
+                              <option value="2">No</option>
                               </select>
                               {{-- @else
                               <span class="fw-bold fs-6 text-muted">Diagnostic Truck Roll</span>
@@ -411,7 +429,7 @@
                            </div>
                            <label class="col-lg-2 fw-semibold text-gray-800" for="hst-vendor-price" {{ $edit ? 'style=padding:11px;' : '' }}>Pre-HST Vendor Price:</label>
                            <div class="col-lg-4 fv-row">
-                           {{-- @if($edit) --}}
+                              {{-- @if($edit) --}}
                               <input type="text" class="form-control" placeholder="Pre-HST Vendor Price:" id="hst-vendor-price" name="hst-vendor-price" value="140.00" {{ $edit ? '' : 'disabled="disabled"' }}>
                               {{-- @else
                               <span class="fw-semibold text-gray-800 fs-6">140.00</span>
@@ -419,12 +437,12 @@
                            </div>
                         </div>
                         <div class="mb-4 d-inline-block">
-                           <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Additional Specifics For Appliances only</div>   
+                           <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Additional Specifics For Appliances only</div>
                         </div>
                         <div class="row mb-4 align-items-center">
                            <label class="col-lg-2 fw-semibold text-gray-800" for="total-diagnostic-fees" {{ $edit ? 'style=padding:11px;' : '' }}>Total Diagnostic Fees:</label>
                            <div class="col-lg-4">
-                           {{-- @if($edit) --}}
+                              {{-- @if($edit) --}}
                               <input type="text" class="form-control" placeholder="Total Diagnostic Fees:" id="total-diagnostic-fees" name="total-diagnostic-fees" value="140.00" {{ $edit ? '' : 'disabled="disabled"' }}>
                               {{-- @else
                               <span class="fw-bold fs-6 text-muted">140.00</span>
@@ -432,7 +450,7 @@
                            </div>
                            <label class="col-lg-2 fw-bold text-gray-800" for="total-labour" {{ $edit ? 'style=padding:11px;' : '' }}>Total Labour:</label>
                            <div class="col-lg-4 fv-row">
-                           {{-- @if($edit) --}}
+                              {{-- @if($edit) --}}
                               <input type="text" class="form-control" placeholder="Total Labour:" id="total-labour" name="total-labour" value="0" {{ $edit ? '' : 'disabled="disabled"' }}>
                               {{-- @else
                               <span class="fw-semibold text-gray-800 fs-6">0</span>
@@ -450,7 +468,7 @@
                            </div>
                            <label class="col-lg-2 fw-semibold text-gray-800" for="parts-freight-cost" {{ $edit ? 'style=padding:11px;' : '' }}>Parts Freight Cost:</label>
                            <div class="col-lg-4 fv-row">
-                           {{-- @if($edit) --}}
+                              {{-- @if($edit) --}}
                               <input type="text" class="form-control" placeholder="Parts Freight Cost" id="parts-freight-cost" name="parts-freight-cost" value="0" {{ $edit ? '' : 'disabled="disabled"' }}>
                               {{-- @else
                               <span class="fw-semibold text-gray-800 fs-6">0</span>
@@ -475,9 +493,11 @@
                               <input class="form-control form-control-solid ps-12 flatpickr-input" value="2024/01/19" placeholder="Select schedule date" name="schedule_date" id="schedule_date" type="text" readonly="readonly" {{ $edit ? '' : 'disabled="disabled"' }}>
                            </div>
                            <label class="col-lg-2 fw-semibold text-gray-800" for="schedule_period">Schedule Period:</label>
-                           {{-- <div class="col-lg-4 fv-row">
+                           {{-- 
+                           <div class="col-lg-4 fv-row">
                               <span class="fw-semibold text-gray-800 fs-6">8:00 - 12:00</span>
-                           </div> --}}
+                           </div>
+                           --}}
                            <div class="position-relative d-flex align-items-center col-lg-4">
                               <i class="ki-duotone ki-calendar-8 fs-2 position-absolute mx-4"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
                               <input class="form-control form-control-solid ps-12 flatpickr-input time" value="" placeholder="Select schedule period" name="schedule_period" id="schedule_period" type="text" readonly="readonly" {{ $edit ? '' : 'disabled="disabled"' }}>
@@ -496,15 +516,14 @@
                </div>
             </div>
          </div>
-
-         <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+         <div class="call_details app-toolbar py-3 py-lg-6">
             <div id="kt_app_toolbar_container">
                <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                   <h1 class="page-heading d-flex text-gray-900 fw-bold fs-1 flex-column justify-content-center my-0">Job Stages Board</h1>
                </div>
             </div>
          </div>
-         <div id="kt_app_content" class="app-content flex-column-fluid">
+         <div class="call_details app-content flex-column-fluid">
             <div id="kt_app_content_container" class="row g-xxl-9">
                <div class="col-xxl-12">
                   <div class="card mb-xl-10" id="kt_profile_details_view">
@@ -516,15 +535,15 @@
                      <div class="card-body row">
                         <div class="col-lg-3 border-end">
                            <div class="mb-4 d-inline-block">
-                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Primary Stage Information</div>   
+                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Primary Stage Information</div>
                            </div>
                            <div class="row mb-4 align-items-center">
                               <label class="col-lg-6 fw-bold text-gray-800" for="days_to_appointment" {{ $edit ? 'style=padding:11px;' : '' }}>Days to The Appointment:</label>
                               <div class="col-lg-6">
                                  <select name="days_to_appointment" id="days_to_appointment" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-hide-search="true" data-placeholder="Select days to appointment..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1"  data-kt-initialized="1">
-                                    <option value="">Select days to appointment...</option>
-                                    <option value="1">Zip Code Not Covered</option>
-                                    <option value="2">Brand Not Covered</option>
+                                 <option value="">Select days to appointment...</option>
+                                 <option value="1">Zip Code Not Covered</option>
+                                 <option value="2">Brand Not Covered</option>
                                  </select>
                               </div>
                            </div>
@@ -543,7 +562,7 @@
                         </div>
                         <div class="col-lg-3 border-end">
                            <div class="mb-4 d-inline-block">
-                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Links</div>   
+                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Links</div>
                            </div>
                            <div class="row mb-4 align-items-center">
                               <label class="col-lg-6 fw-semibold text-gray-800" for="">HCP Job Link:</label>
@@ -566,7 +585,7 @@
                         </div>
                         <div class="col-lg-6">
                            <div class="mb-4 d-inline-block">
-                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Additional Stage System Information</div>   
+                              <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Additional Stage System Information</div>
                            </div>
                            <div class="row mb-4 align-items-center">
                               <label class="col-lg-3 fw-bold text-gray-800" {{ $edit ? 'style=padding:11px;' : '' }}>First Stage - Job Accepted:</label>
@@ -604,15 +623,14 @@
                </div>
             </div>
          </div>
-
-         <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+         <div class="call_details app-toolbar py-3 py-lg-6">
             <div id="kt_app_toolbar_container">
                <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                   <h1 class="page-heading d-flex text-gray-900 fw-bold fs-1 flex-column justify-content-center my-0">Actions Board</h1>
                </div>
             </div>
          </div>
-         <div id="kt_app_content" class="app-content flex-column-fluid">
+         <div class="call_details app-content flex-column-fluid">
             <div id="kt_app_content_container" class="row g-xxl-9">
                <div class="col-xxl-6">
                   <div class="card mb-xl-10 h-md-100" id="kt_profile_details_view">
@@ -628,26 +646,24 @@
                            <label class="col-lg-3 fw-semibold text-gray-800" for="job_rejection_reason" {{ $edit ? 'style=padding:11px;' : '' }}>Job Rejection Reason:</label>
                            <div class="col-lg-5">
                               {{-- <span class="fw-bold fs-6 text-muted">Unable To Contact Customer</span> --}}
-                              <select name="job_rejection_reason" id="job_rejection_reason" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-hide-search="true" data-placeholder="Select job rejection reason..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1"  data-kt-initialized="1">
-                                 <option value="">Select urgency level...</option>
-                                 <option value="1">Zip Code Not Covered</option>
-                                 <option value="2">Brand Not Covered</option>
-                                 <option value="3">Product Not Covered</option>
-                                 <option value="4">Customer Refuses Service</option>
-                                 <option value="5">Unable To Contact Customer</option>
-                                 <option value="6">Overbooked/ Understaffed</option>
-                                 <option value="7">Technician Not Available</option>
-                                 <option value="8">Price Inaccuracy</option>
-                             </select>
+                              <select name="job_rejection_reason" id="job_rejection_reason"  {{ $key == 'new-job'  ? '' : 'disabled="disabled"' }}  data-control="select2" data-hide-search="true" data-placeholder="Select job rejection reason..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1"  data-kt-initialized="1">
+                              <option value="">Select urgency level...</option>
+                              <option value="1">Zip Code Not Covered</option>
+                              <option value="2">Brand Not Covered</option>
+                              <option value="3">Product Not Covered</option>
+                              <option value="4">Customer Refuses Service</option>
+                              <option value="5">Unable To Contact Customer</option>
+                              <option value="6">Overbooked/ Understaffed</option>
+                              <option value="7">Technician Not Available</option>
+                              <option value="8">Price Inaccuracy</option>
+                              </select>
                            </div>
                         </div>
                         <div class="row justify-content-center mt-14">
-                           <button type="button" class="btn btn-danger me-4 col-lg-auto">
-                              Reject Job
-                           </button>
-                           <button type="button" class="btn btn-success col-lg-auto">
-                              Accept Job
-                           </button>
+                        @if($key == 'new-job')
+                           <button type="button" class="btn btn-danger me-4 col-lg-auto" onclick="hideKtAppContent('reject')">Reject Job</button>
+                           <button type="button" class="btn btn-success col-lg-auto" onclick="hideKtAppContent('accept')">Accept Job</button>
+                        @endif
                         </div>
                      </div>
                   </div>
@@ -676,12 +692,12 @@
                            <div class="col-lg-3">
                               {{-- <span class="fw-bold fs-6 text-muted">Select</span> --}}
                               <select name="reschedule_reason" id="reschedule_reason" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-hide-search="true" data-placeholder="Select reschedule reason..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1"  data-kt-initialized="1">
-                                 <option value="">Select reschedule reason...</option>
-                                 <option value="1">CRM</option>
-                                 <option value="2">Project Alice</option>
-                                 <option value="3">Keenthemes</option>
-                                 <option value="4">General</option>
-                             </select>
+                              <option value="">Select reschedule reason...</option>
+                              <option value="1">CRM</option>
+                              <option value="2">Project Alice</option>
+                              <option value="3">Keenthemes</option>
+                              <option value="4">General</option>
+                              </select>
                            </div>
                            <label class="col-lg-3 fw-semibold text-gray-800"  {{ $edit ? 'style=padding:11px;' : '' }}>Extra Stage - Reschedule Inquiry:</label>
                            <div class="col-lg-3 fv-row">
@@ -703,11 +719,11 @@
                            <label class="col-lg-3 fw-semibold text-gray-800" for='assigned_tech' {{ $edit ? 'style=padding:11px;' : '' }}>Assigned Tech:</label>
                            <div class="col-lg-5">
                               <select name="assigned_tech" id="assigned_tech" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-hide-search="true" data-placeholder="Select assigned tech..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1"  data-kt-initialized="1">
-                                 <option value="">Select assigned tech...</option>
-                                 <option value="1">Zip Code Not Covered</option>
-                                 <option value="2">Brand Not Covered</option>>
-                                 <option value="8">Price Inaccuracy</option>
-                             </select>
+                              <option value="">Select assigned tech...</option>
+                              <option value="1">Zip Code Not Covered</option>
+                              <option value="2">Brand Not Covered</option>
+                              <option value="8">Price Inaccuracy</option>
+                              </select>
                            </div>
                         </div>
                      </div>
@@ -725,12 +741,12 @@
                            <label class="col-lg-3 fw-semibold text-gray-800" for="cancellation_reason" {{ $edit ? 'style=padding:11px;' : '' }}>Cancellation Reason:</label>
                            <div class="col-lg-5">
                               <select name="cancellation_reason" id="cancellation_reason" {{ $edit ? '' : 'disabled="disabled"' }} data-control="select2" data-hide-search="true" data-placeholder="Select job rejection reason..." class="form-select form-select-solid select2-box" data-minimum-results-for-search="Infinity" tabindex="-1"  data-kt-initialized="1">
-                                 <option value="">Select urgency level...</option>
-                                 <option value="1">Zip Code Not Covered</option>
-                                 <option value="2">Brand Not Covered</option>
-                                 <option value="3">Product Not Covered</option>
-                                 <option value="4">Customer Refuses Service</option>
-                             </select>
+                              <option value="">Select urgency level...</option>
+                              <option value="1">Zip Code Not Covered</option>
+                              <option value="2">Brand Not Covered</option>
+                              <option value="3">Product Not Covered</option>
+                              <option value="4">Customer Refuses Service</option>
+                              </select>
                            </div>
                         </div>
                         <div class="row mb-4 align-items-center">
@@ -780,7 +796,7 @@
                      </div>
                      <div class="card-body">
                         <div class="mb-4 d-inline-block">
-                           <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Request Job Authorization</div>   
+                           <div class="fw-bold fs-6 text-gray-800 underscore-text-title">Request Job Authorization</div>
                         </div>
                         <div class="row mb-4 align-items-center">
                            <label class="col-lg-3 fw-bold text-gray-800" {{ $edit ? 'style=padding:11px;' : '' }}>Profile Link:</label>
@@ -815,3 +831,23 @@
    </div>
    <!--end:::Main-->
 </x-default-layout>
+<script>
+function hideKtAppContent(key) {
+    var message = document.getElementById('kt_app_content_message');
+    var contents = document.querySelectorAll('.call_details');
+
+    if (key == 'reject') {
+        message.querySelector('#customerDetails').innerHTML = '<h3 class="fw-bold m-0">Rejected Job Successfully</h3>';
+    } else {
+        message.querySelector('#customerDetails').innerHTML = '<h3 class="fw-bold m-0">Accepted Job Successfully</h3>';
+    }
+
+    // Tüm .call_details elemanlarını gizle
+    contents.forEach(function(content) {
+        content.style.display = 'none';
+    });
+
+    message.style.display = 'block';
+}
+
+</script>
