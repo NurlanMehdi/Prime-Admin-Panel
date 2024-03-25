@@ -8313,3 +8313,98 @@ $('.flatpickr-input.time').flatpickr({
 
 
 $('.select2-box').select2();
+
+// $(document).ready(function() {
+//     $('#newJobInquiriesTable thead tr')
+//         .clone(true)
+//         .addClass('filters')
+//         .appendTo('#example thead');
+//     $('#newJobInquiriesTable').DataTable()
+// });
+
+// $(document).ready(function() {
+//     var table = $('#newJobInquiriesTable').DataTable();
+
+//     $('#newJobInquiriesTable thead th').each(function() {
+//       var title = $('#filterRow').text();
+//       $('#filterRow').append('<input type="text" placeholder="Search ' + title + '" />');
+//     });
+
+//     table.columns().every(function() {
+//       var that = $('#filterRow');
+
+//       $('input', $('#filterRow').header()).on('keyup change', function() {
+//         if (that.search() !== $('#filterRow').value) {
+//           that
+//             .search($('#filterRow').value)
+//             .draw();
+//         }
+//       });
+//     });
+//   });
+
+// $(document).ready(function() {
+//     // Initialize DataTable
+//     var table = $('#newJobInquiriesTable').DataTable();
+
+//     // Apply the filter
+//     $('#filterRow input').on('keyup change', function() {
+//         table.column($(this).parent().index() + ':visible')
+//              .search(this.value)
+//              .draw();
+//     });
+// });
+
+$(document).ready(function () {
+    $('#newJobInquiriesTable thead tr')
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#newJobInquiriesTable thead');
+ 
+    $('#newJobInquiriesTable').DataTable({
+        orderCellsTop: true,
+        initComplete: function () {
+            var api = this.api();
+ 
+            api
+                .columns()
+                .eq(0)
+                .each(function (colIdx) {
+                    var cell = $('.filters th').eq(
+                        $(api.column(colIdx).header()).index()
+                    );
+                    var title = $(cell).text();
+                    $(cell).html('<input type="text" placeholder="Search ' + title + '" />');
+ 
+                    $(
+                        'input',
+                        $('.filters th').eq($(api.column(colIdx).header()).index())
+                    )
+                        .off('keyup change')
+                        .on('change', function (e) {
+                            $(this).attr('title', $(this).val());
+ 
+                            var cursorPosition = this.selectionStart;
+                            api
+                                .column(colIdx)
+                                .search(
+                                    this.value != ''
+                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                        : '',
+                                    this.value != '',
+                                    this.value == ''
+                                )
+                                .draw();
+                        })
+                        .on('keyup', function (e) {
+                            e.stopPropagation();
+ 
+                            $(this).trigger('change');
+                            $(this)
+                                .focus()[0]
+                                .setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                });
+        },
+    });
+});

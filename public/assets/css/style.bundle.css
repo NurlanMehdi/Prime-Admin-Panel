@@ -51442,3 +51442,11 @@ body,
     color: #ffffff !important;
   }
 }
+
+
+#newJobInquiriesTable thead tr th:first-child::after{
+  display: none !important;
+}
+#newJobInquiriesTable thead .filters th:first-child input{
+  display: none !important;
+}

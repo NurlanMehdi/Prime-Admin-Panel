@@ -105,7 +105,7 @@
                                 <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
                                    <!--begin::Table head-->
 									<thead>
-										<tr class="fw-bold text-muted">
+										<tr class="fw-bold">
 											<th class="w-25px">
 												<div class="form-check form-check-sm form-check-custom form-check-solid">
 													<input class="form-check-input" type="checkbox" value="1" data-kt-check="true" data-kt-check-target=".widget-13-check" />
@@ -114,17 +114,17 @@
 											<th class="min-w-150px">Urgency Level</th>
 											<th class="min-w-140px">Admin Panel Job ID</th>
 											<th class="min-w-120px">HCP invoice</th>
-											<th class="min-w-120px">B2B/ Warranty Reference ID</th>
-											<th class="min-w-120px">Source (B2C, B2B, Warranty)</th>
+											<th class="min-w-150px">B2B/ Warranty Reference ID</th>
+											<th class="min-w-150px">Source (B2C, B2B, Warranty)</th>
 											<th class="min-w-120px">Company name</th>
 											<th class="min-w-120px">Customer name</th>
 											<th class="min-w-120px">Phone number</th>
 											<th class="min-w-120px">Job Postal Code</th>
-											<th class="min-w-120px">Appointment Time window </th>
-											<th class="min-w-120px">Days to The Appointment</th>
+											<th class="min-w-150px">Appointment Time window </th>
+											<th class="min-w-150px">Days to The Appointment</th>
 											<th class="min-w-120px">Current Job Stage</th>
 											<th class="min-w-120px">Next Job Stage</th>
-											<th class="min-w-120px">Type of Job (Appliance/ Other)</th>
+											<th class="min-w-150px">Type of Job (Appliance/ Other)</th>
 											<th class="min-w-120px">Type of Product</th>
 											<th class="min-w-120px">Problem Description</th>
 										</tr>
@@ -215,16 +215,16 @@ document.getElementById('jobSearchForm').addEventListener('submit', function(eve
                     
                 '</td>' +
                 '<td>' +
-                '<a href="{{ route('call.details', ['edit' => false]) }}" class="text-gray-900 fw-bold text-hover-primary fs-6">W-'+data.jobs.id+'</a>' 
+                '<a href="{{ route('call.details', ['edit' => false]) }}" class="fw-bold text-hover-primary fs-6">W-'+data.jobs.id+'</a>' 
                     +
                 '</td>' +
                 '<td>' +
-                    '<a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">05/28/2020</a>' +
+                    '<a href="#" class="fw-bold text-hover-primary d-block mb-1 fs-6">05/28/2020</a>' +
                 '</td>' +
                 '<td>' +
-                    '<a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">Intertico</a>' +
+                    '<a href="#" class="fw-bold text-hover-primary d-block mb-1 fs-6">Intertico</a>' +
                 '</td>' +
-                '<td class="text-gray-900 fw-bold text-hover-primary fs-6">$3560</td>' +
+                '<td class="fw-bold fs-6">$3560</td>' +
                 '<td>' +
                     '<span class="text-muted fw-semibold text-muted d-block fs-7">'+ data.jobs.company_name +'</span>' +
                 '</td>' +
@@ -264,7 +264,7 @@ document.getElementById('jobSearchForm').addEventListener('submit', function(eve
                 // Append the new row to the table body
                 document.getElementById('searchResultsTableBody').insertAdjacentHTML('beforeend', newRow);
                 
-                document.getElementById('searchResultsTable').style.display = 'table';
+                document.getElementById('searchResultsTable').style.display = 'block';
             }
         })
         .catch(error => {
