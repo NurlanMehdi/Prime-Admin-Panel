@@ -111,6 +111,7 @@
 													<input class="form-check-input" type="checkbox" value="1" data-kt-check="true" data-kt-check-target=".widget-13-check" />
 												</div>
 											</th>
+
 											<th class="min-w-150px"><span class='badge fw-bold fs-6'>Urgency Level</span></th>
 											<th class="min-w-140px"><span class='badge fw-bold fs-6'>Admin Panel Job ID</span></th>
 											<th class="min-w-120px"><span class='badge fw-bold fs-6'>HCP invoice	</span></th>
@@ -127,6 +128,7 @@
 											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Job (Appliance/ Other)</span></th>
 											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Product</span></th>
 											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Problem Description</span></th>
+
 										</tr>
 									</thead>
 									<!--end::Table head-->
@@ -215,6 +217,7 @@ document.getElementById('jobSearchForm').addEventListener('submit', function(eve
                     
                 '</td>' +
                 '<td>' +
+
                 '<a href="{{ route('call.details', ['edit' => 'false']) }}" class="text-gray-900 fw-bold text-hover-primary fs-6">W-'+data.jobs.id+'</a>' 
                     +
                 '</td>' +
@@ -265,7 +268,6 @@ document.getElementById('jobSearchForm').addEventListener('submit', function(eve
                 document.getElementById('searchResultsTableBody').innerHTML = '';
                 document.getElementById('searchResultsTableBody').insertAdjacentHTML('beforeend', newRow);
                 
-                document.getElementById('searchResultsTable').style.display = 'block';
                 document.getElementById('searchResultsTable').style.display = 'block';
             }
         })

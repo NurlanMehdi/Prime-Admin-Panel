@@ -66,6 +66,9 @@
 															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Product</span></th>
 															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Problem Description</span></th>
 														</tr>
+														<tr class="filters">
+
+														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->

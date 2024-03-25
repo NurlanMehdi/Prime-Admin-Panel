@@ -50,21 +50,21 @@
 																</div>
 															</th>
 															<th class="min-w-150px"><span class='badge fw-bold fs-6'>Urgency Level</span></th>
-															<th class="min-w-140px"><span class='badge fw-bold fs-6'>Admin Panel Job ID</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>HCP invoice	</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>B2B/ Warranty Reference ID</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Source (B2C, B2B, Warranty) </span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Company name</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Customer name </span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Phone number </span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Job Postal Code</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Appointment Time window</span> </th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Days to The Appointment</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Current Job Stage</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Next Job Stage</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Job (Appliance/ Other)</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Product</span></th>
-															<th class="min-w-120px"><span class='badge fw-bold fs-6'>Problem Description</span></th>
+											<th class="min-w-140px"><span class='badge fw-bold fs-6'>Admin Panel Job ID</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>HCP invoice	</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>B2B/ Warranty Reference ID</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Source (B2C, B2B, Warranty) </span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Company name</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Customer name </span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Phone number </span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Job Postal Code</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Appointment Time window</span> </th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Days to The Appointment</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Current Job Stage</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Next Job Stage</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Job (Appliance/ Other)</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Type of Product</span></th>
+											<th class="min-w-120px"><span class='badge fw-bold fs-6'>Problem Description</span></th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
