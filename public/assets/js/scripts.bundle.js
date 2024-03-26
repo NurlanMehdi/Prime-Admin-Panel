@@ -8314,46 +8314,6 @@ $('.flatpickr-input.time').flatpickr({
 
 $('.select2-box').select2();
 
-// $(document).ready(function() {
-//     $('#newJobInquiriesTable thead tr')
-//         .clone(true)
-//         .addClass('filters')
-//         .appendTo('#example thead');
-//     $('#newJobInquiriesTable').DataTable()
-// });
-
-// $(document).ready(function() {
-//     var table = $('#newJobInquiriesTable').DataTable();
-
-//     $('#newJobInquiriesTable thead th').each(function() {
-//       var title = $('#filterRow').text();
-//       $('#filterRow').append('<input type="text" placeholder="Search ' + title + '" />');
-//     });
-
-//     table.columns().every(function() {
-//       var that = $('#filterRow');
-
-//       $('input', $('#filterRow').header()).on('keyup change', function() {
-//         if (that.search() !== $('#filterRow').value) {
-//           that
-//             .search($('#filterRow').value)
-//             .draw();
-//         }
-//       });
-//     });
-//   });
-
-// $(document).ready(function() {
-//     // Initialize DataTable
-//     var table = $('#newJobInquiriesTable').DataTable();
-
-//     // Apply the filter
-//     $('#filterRow input').on('keyup change', function() {
-//         table.column($(this).parent().index() + ':visible')
-//              .search(this.value)
-//              .draw();
-//     });
-// });
 
 $(document).ready(function () {
     $('#newJobInquiriesTable thead tr')
@@ -8362,6 +8322,8 @@ $(document).ready(function () {
         .appendTo('#newJobInquiriesTable thead');
  
     $('#newJobInquiriesTable').DataTable({
+        "bPaginate": false,
+        bInfo : false,
         orderCellsTop: true,
         initComplete: function () {
             var api = this.api();
@@ -8383,7 +8345,7 @@ $(document).ready(function () {
                         .off('keyup change')
                         .on('change', function (e) {
                             $(this).attr('title', $(this).val());
- 
+                            var regexr = '({search})';
                             var cursorPosition = this.selectionStart;
                             api
                                 .column(colIdx)

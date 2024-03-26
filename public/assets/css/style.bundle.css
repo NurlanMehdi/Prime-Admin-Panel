@@ -51450,3 +51450,7 @@ body,
 #newJobInquiriesTable thead .filters th:first-child input{
   display: none !important;
 }
+.filters input{
+  width: 100%;
+  outline: none;
+}

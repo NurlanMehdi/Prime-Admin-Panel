@@ -30,7 +30,7 @@
             <!--begin::Content-->
             <div id="kt_app_content" class="app-content flex-column-fluid">
                 <!--begin::Content container-->
-                <div id="kt_app_content_container" class="row gy-5 g-xl-10">
+                <div id="kt_app_content_container" class="">
                     <!--begin::Form-->
                     <form id="jobSearchForm" action="{{ route('job.search.filter') }}" method="post">
 					@csrf<!--begin::Card-->
@@ -38,7 +38,7 @@
                             <!--begin::Card body-->
                             <div class="card-body">
                                 <!--begin::Compact form-->
-                                <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-end">
                                     <!--begin::Input group-->
                                     <!--<div class="position-relative w-md-400px me-md-3">
                                         <label class="form-label fw-semibold">Job Status</label>
