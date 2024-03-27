@@ -8346,7 +8346,7 @@ $(document).ready(function () {
                         .on('change', function (e) {
                             $(this).attr('title', $(this).val());
                             var regexr = '({search})';
-                            var cursorPosition = this.selectionStart;
+                            // var cursorPosition = this.selectionStart;
                             api
                                 .column(colIdx)
                                 .search(
@@ -8364,7 +8364,7 @@ $(document).ready(function () {
                             $(this).trigger('change');
                             $(this)
                                 .focus()[0]
-                                .setSelectionRange(cursorPosition, cursorPosition);
+                                // .setSelectionRange(cursorPosition, cursorPosition);
                         });
                 });
         },
